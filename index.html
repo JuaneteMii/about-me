@@ -1,169 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About Me 2 — Frutiger Aero</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JuaneteMii</title>
   <style>
-    :root{--c1:#1299ca;--c2:#35bcde;--c3:#6fd7ec;--c4:#9ceff2;--c5:#faefef;--green:#71ab23;--yellow:#fbb905;--orange:#d55e0f;--glass:rgba(255,255,255,.35);--glass-strong:rgba(255,255,255,.55);--ink:#0b2a3a;--shadow:0 10px 30px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.35);--radius:18px}
-    *{box-sizing:border-box}html,body{height:100%}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";color:var(--ink);background:radial-gradient(1200px 800px at 20% -10%, #ffffff 0%, rgba(255,255,255,.6) 20%, transparent 60%),radial-gradient(900px 700px at 80% 0%, rgba(255,255,255,.75) 0%, transparent 60%),linear-gradient(115deg,var(--c1) 0%,var(--c2) 18%,var(--c3) 44%,var(--c4) 72%, #b9ffd8 100%);background-attachment:fixed;overflow-x:hidden}
-    .aurora{position:fixed;inset:-20% -10%;pointer-events:none;filter:blur(40px) saturate(130%);mix-blend-mode:screen;opacity:.8}
-    .aurora::before,.aurora::after{content:"";position:absolute;inset:0;background:conic-gradient(from 90deg, rgba(0,255,194,.25), rgba(0,180,255,.45), rgba(0,255,132,.25), rgba(0,140,255,.35), rgba(255,255,255,.15));animation:swirl 22s linear infinite}
-    .aurora::after{animation-duration:34s;transform:scale(1.2) rotate(15deg);opacity:.7}
-    @keyframes swirl{to{transform:rotate(360deg)}}
-    header.site{position:sticky;top:0;z-index:10;backdrop-filter:blur(14px) saturate(150%);background:linear-gradient(180deg,var(--glass-strong),rgba(255,255,255,.2));box-shadow:var(--shadow);border-radius:0 0 var(--radius) var(--radius);padding:14px 24px;display:flex;align-items:center;gap:16px}
-    .logo{width:44px;height:44px;border-radius:12px;position:relative;background:linear-gradient(145deg,#e9ffff,#a7f0ff);box-shadow:inset 0 2px 0 rgba(255,255,255,.8), inset 0 -3px 8px rgba(0,0,0,.08), 0 10px 18px rgba(0,0,0,.15)}
-    .logo::after{content:"";position:absolute;inset:6px;border-radius:9px;background:radial-gradient(circle at 30% 25%, rgba(255,255,255,.95), rgba(255,255,255,.15) 55%, rgba(255,255,255,0) 60%), linear-gradient(145deg, var(--c3), var(--c1));mix-blend-mode:overlay}
-    h1.title{margin:0;font-weight:800;letter-spacing:.2px;text-shadow:0 1px 0 rgba(255,255,255,.8)}
-    .shell{max-width:1100px;margin:28px auto;padding:0 20px}
-    .glass-card{background:linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.35));border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.6)}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:16px;cursor:pointer;user-select:none;background:linear-gradient(180deg,#ffffff,#c7f0ff 55%,#9ee8ff);box-shadow:inset 0 2px 0 rgba(255,255,255,.9), inset 0 -6px 10px rgba(0,0,0,.08), 0 10px 20px rgba(0,90,120,.25);border:1px solid rgba(0,0,0,.05);transition:transform .15s ease, box-shadow .15s ease}
-    .btn:hover{transform:translateY(-2px);box-shadow:inset 0 2px 0 rgba(255,255,255,.95), inset 0 -6px 14px rgba(0,0,0,.1), 0 16px 26px rgba(0,120,160,.28)}
-    .btn:active{transform:translateY(1px);box-shadow:inset 0 3px 0 rgba(255,255,255,1), inset 0 -3px 8px rgba(0,0,0,.12), 0 6px 12px rgba(0,120,160,.2)}
-    .btn.primary{background:linear-gradient(180deg,#e8fff6,#bfffd9 55%,#80f0b5);color:#034a2d}
-    .btn.blue{background:linear-gradient(180deg,#f5fbff,#cdeeff 55%,#a0e3ff);color:#083b55}
-    .panel{padding:22px}.panel h2{margin:0 0 10px;font-weight:800}.panel .subtitle{opacity:.8;margin:0 0 14px}
-    .grid{display:grid;gap:20px}@media(min-width:900px){.grid.two{grid-template-columns:1.2fr .8fr}}
-    .widget{padding:16px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.6));box-shadow:inset 0 2px 0 rgba(255,255,255,.95), inset 0 -6px 10px rgba(0,0,0,.06), 0 14px 28px rgba(0,80,110,.18);border:1px solid rgba(255,255,255,.7)}
-    .chip{display:inline-block;padding:10px 14px;border-radius:999px;margin:6px;font-weight:600;color:#083b55;background:linear-gradient(180deg,#ffffff,#e9faff);box-shadow:inset 0 2px 0 rgba(255,255,255,.9), 0 10px 18px rgba(0,120,180,.18);border:1px solid rgba(0,0,0,.05);transform:translateZ(0);transition:transform .2s ease}
-    .chip:hover{transform:translateY(-2px)}
-    .glass{backdrop-filter:blur(16px) saturate(160%);background:linear-gradient(180deg,var(--glass),rgba(255,255,255,.18));border:1px solid rgba(255,255,255,.6)}
-    .bubbles{position:relative;height:120px;overflow:visible;filter:saturate(130%)}
-    .bubble{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 30%, #fff, #dff7ff 40%, rgba(173,234,255,.7) 60%, rgba(120,220,255,.25) 75%, rgba(255,255,255,0) 80%);box-shadow:inset 0 2px 0 rgba(255,255,255,.9), 0 12px 20px rgba(0,100,140,.25);animation:float 12s ease-in-out infinite}
-    .bubble.small{width:32px;height:32px}.bubble.med{width:52px;height:52px}.bubble.lg{width:86px;height:86px}
-    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-    a.link{color:#0a6bb8;text-decoration:none;font-weight:600}a.link:hover{text-decoration:underline}
-    .project{display:flex;gap:16px;align-items:center}
-    .project .icon{width:56px;height:56px;border-radius:14px;background:linear-gradient(180deg,#ffffff,#dff6ff);box-shadow:inset 0 2px 0 rgba(255,255,255,.95), inset 0 -6px 10px rgba(0,0,0,.06), 0 10px 20px rgba(0,100,140,.18)}
-    footer{margin:36px 0 50px;text-align:center;opacity:.9}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root{
+      --bg1:#7fd2ff; --bg2:#57bff7; --bg3:#8fe3ff; --bg4:#b8ffd7;
+      --glass: rgba(255,255,255,0.38);
+      --glass-strong: rgba(255,255,255,0.62);
+      --ink:#212124; --ink-inv:#f3f4f7;
+      --radius: 22px;
+      --shadow-soft: 0 10px 34px rgba(35,75,120,0.18);
+      --shadow-strong: 0 18px 48px rgba(30,70,110,0.22);
+      --inner: inset 0 2px 0 rgba(255,255,255,.95), inset 0 -6px 12px rgba(10,22,33,.12);
+    }
+    body {
+      font-family: -apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;
+      background:
+        radial-gradient(1200px 800px at 15% -10%, rgba(255,255,255,0.85), transparent 58%),
+        radial-gradient(800px 600px at 85% 0%, rgba(255,255,255,0.7), transparent 60%),
+        linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 33%, var(--bg3) 60%, var(--bg4) 100%);
+      color: var(--ink); line-height: 1.62; background-attachment: fixed; overflow-x: hidden;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root{ --ink:#f3f4f7; --ink-inv:#111215; }
+      body { background:
+        radial-gradient(1200px 800px at 15% -10%, rgba(120,170,220,0.18), transparent 58%),
+        radial-gradient(800px 600px at 85% 0%, rgba(90,160,230,0.12), transparent 60%),
+        linear-gradient(135deg, #0b2a4a 0%, #114a74 35%, #136f88 60%, #1e8b6a 100%);
+      }
+    }
+    .aurora { position: fixed; inset: -20% -10%; pointer-events: none; filter: blur(40px) saturate(130%); mix-blend-mode: screen; opacity: .85; z-index: 0; }
+    .aurora::before, .aurora::after { content: ""; position: absolute; inset: 0; background: conic-gradient(from 90deg, rgba(255,255,255,0.22), rgba(0,200,255,0.36), rgba(0,255,170,0.28), rgba(255,230,0,0.18), rgba(255,255,255,0.2)); animation: swirl 28s linear infinite; }
+    .aurora::after { animation-duration: 44s; transform: scale(1.2) rotate(18deg); opacity: .7; }
+    @keyframes swirl { to{ transform: rotate(360deg);} }
+
+    .hero-banner {
+      width: 100vw; min-width: 100vw; left: 0; right: 0;
+      background: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+      color: white; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 5rem 1.6rem 3.2rem 1.6rem;
+      box-shadow: 0 13px 42px 0 rgba(50,50,94,0.10),0 1.5px 7.5px 0 rgba(0,0,0,0.17);
+      position: relative; z-index: 2; border-bottom-left-radius: 28px; border-bottom-right-radius: 28px;
+      backdrop-filter: blur(12px) saturate(160%); border: 1px solid rgba(255,255,255,0.28); overflow: hidden;
+    }
+    .hero-banner::after{ content:""; position:absolute; inset: -40% -10% auto -10%; height: 180%; background: radial-gradient(550px 180px at 20% 10%, rgba(255,255,255,0.55), transparent 60%), radial-gradient(320px 140px at 80% 20%, rgba(255,255,255,0.3), transparent 60%); opacity:.45; pointer-events:none; }
+
+    .profile-picture { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin-bottom: 1.3rem; border: 4px solid rgba(255,255,255,0.32); background: linear-gradient(180deg,#ffffff,#f1f6ff); box-shadow: var(--inner), 0 12px 28px rgba(10,40,70,0.25); }
+    .hero-banner h1 { font-size: 2.75rem; font-weight: 800; text-align: center; letter-spacing: -2px; margin-bottom: 0.35rem; color: inherit; text-shadow: 0 2px 0 rgba(0,0,0,0.08), 0 6px 18px rgba(0,0,0,0.18); }
+    .hero-banner .subtitle { font-size: 1.17rem; color: #f2edf7; margin-bottom: 0.4rem; margin-top: 0.1rem; font-weight: 600; letter-spacing: 0.02em; text-align: center; text-shadow: 0 1px 0 rgba(0,0,0,0.28); }
+    @media (max-width: 650px){ .hero-banner h1 { font-size: 2rem; } .profile-picture { width: 94px; height:94px;} .hero-banner { padding: 3rem 0.5rem 1.5rem 0.5rem;} }
+
+    .container { max-width: 760px; margin: 0 auto; padding: 0 1.2rem 2.3rem 1.2rem; display: flex; flex-direction: column; align-items: center; margin-top: -2rem; position: relative; z-index: 1; }
+
+    .section-title { margin: 3.2rem 0 1.2rem 0; text-align: center; font-size: 2.1rem; font-weight: 800; letter-spacing: -1px; color: inherit; width: 100%; text-shadow: 0 1px 0 rgba(255,255,255,0.45); }
+
+    .bio-content { font-size: 1.13rem; color: #2a2a2f; margin-bottom: 2.5rem; text-align: center; margin-left: auto; margin-right: auto; max-width: 560px; padding-left: 1.4rem; padding-right: 1.4rem; background: linear-gradient(180deg, var(--glass-strong), rgba(255,255,255,0.26)); border-radius: 18px; border: 1px solid rgba(255,255,255,0.55); box-shadow: var(--shadow-soft); backdrop-filter: blur(10px) saturate(160%); }
+    @media (max-width: 650px) { .bio-content { max-width: 98vw; padding-left: 10vw; padding-right: 10vw; } }
+    @media (max-width: 440px) { .bio-content { font-size: 0.97rem; padding-left: 2.5vw; padding-right: 2.5vw; } }
+    @media (prefers-color-scheme: dark) { .bio-content { color: #ededed; background: linear-gradient(180deg, rgba(40,40,55,0.55), rgba(35,35,50,0.32)); border-color: rgba(255,255,255,0.18); box-shadow: 0 12px 26px rgba(10,10,18,0.42);} }
+
+    .mysocials-title { font-size: 2rem; font-weight: 800; color: inherit; margin-bottom: 1.2rem; letter-spacing: -1px; width: 100%; text-align: center; text-shadow: 0 1px 0 rgba(255,255,255,0.5); }
+
+    .socials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem 1.5rem; width: 100%; justify-content: center; margin: 0 auto 2.5rem auto; max-width: 740px; place-items: center; }
+    @media (max-width: 630px) { .socials-grid { grid-template-columns: 1fr; gap: 1.2rem; } }
+
+    .social-card { display: flex; align-items: center; gap: 1.09rem; min-width: 0; width: 340px; max-width: 95vw; height: 96px; background: linear-gradient(180deg, #ffffff, #f4f7ff); border-radius: 22px; box-shadow: var(--inner), 0 12px 28px rgba(45,65,100,0.16); text-decoration: none; border: 1.5px solid #ececf5; transition: transform 0.15s, background 0.13s, box-shadow 0.2s; overflow: hidden; margin-left: auto; margin-right: auto; padding-left: 1.18rem; padding-right: 1.05rem; justify-content: flex-start; }
+    .social-card:hover, .social-card:focus-within { background: #f9faff; transform: translateY(-4px) scale(1.03); box-shadow: 0 18px 36px rgba(45,65,100,0.22); }
+    @media (prefers-color-scheme: dark) { .social-card { background: linear-gradient(180deg,#23232a,#1d1d23); border: 1.5px solid #2c2c33; box-shadow: 0 8px 28px rgba(18,20,33,0.35); } .social-card:hover, .social-card:focus-within { background: #1c1c24; } }
+
+    .social-icon { width: 52px; height: 52px; object-fit: cover; background: #fff; border-radius: 12px; box-shadow: var(--inner), 0 8px 18px rgba(30,60,100,0.18); flex-shrink: 0; padding: 6px; display: block; transition: background 0.16s, border-radius 0.16s; }
+    .social-icon.amino { border-radius: 50%; padding: 0; box-shadow: 0 8px 18px rgba(30,60,100,0.18); }
+    @media (prefers-color-scheme: dark) { .social-icon { background: #fff; border-radius: 12px; } }
+
+    .social-infos { display: flex; flex-direction: column; justify-content: center; font-size: 1.07rem; color: #23242d; min-width: 0; max-width: 200px; flex: 1 1 auto; align-items: flex-start; }
+    .social-name { font-weight: 700; color: inherit; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; display: block; }
+    .social-desc { font-size: 0.98rem; color: #7e7e85; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; display: block; }
+    @media (prefers-color-scheme: dark) { .social-infos { color: #fff; } .social-desc { color: #b3b6cb; } }
+
+    .links { text-align: center; margin: 3rem 0 1.2rem 0; width: 100%; }
+    .links-container { display: flex; flex-wrap: wrap; gap: 1.15rem; justify-content: center; }
+    .link-button { display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.92rem 2rem; border: none; background: linear-gradient(180deg,#f6f6fb,#dfe4ff); color: #222124; text-decoration: none; border-radius: 999px; font-size: 1.07rem; font-weight: 700; transition: background 0.22s, transform .15s, box-shadow .22s; outline: none !important; box-shadow: var(--inner), 0 10px 22px rgba(40,70,110,0.18); }
+    .link-button:hover, .link-button:focus { background: #d2d9ff; text-decoration: none; transform: translateY(-2px); box-shadow: 0 16px 26px rgba(40,70,110,0.26); }
+    .link-button:visited { color: #212124; }
+    @media (prefers-color-scheme: dark) { .link-button { background: linear-gradient(180deg,#2a2a3b,#232334); color: #f8faff; box-shadow: 0 10px 22px rgba(8,10,20,0.55); } .link-button:hover, .link-button:focus { background: #2c2c47; } .link-button:visited { color: #f7fafd; } }
+
+    a, a:visited, a:hover, a:focus { text-decoration: none; color: inherit; outline: none; }
+
+    footer { text-align: center; color: #888; background: transparent; font-size: 0.96rem; padding: 2.5rem 0 1.5rem 0; margin-bottom: 0.3rem; }
+
+    @media (max-width: 640px) { .container { padding: 0 0.08rem 1.15rem 0.08rem; } .section-title, .mysocials-title { font-size: 1.35rem; } .bio-content { font-size: 0.99rem;} }
+    @media (max-width:420px) { .hero-banner { padding: 1.9rem 0.5rem 0.8rem 0.5rem;} .hero-banner h1 { font-size: 1.7rem; } .bio-content { font-size: 0.93rem;} .social-infos { font-size: 0.92rem;} .social-card { height: 82px;} .social-icon { width: 40px; height:40px; } }
   </style>
 </head>
 <body>
-  <div class="aurora"></div>
-  <header class="site glass-card">
-    <div class="logo" aria-hidden="true"></div>
-    <h1 class="title">JuaneteMii — About Me 2</h1>
-    <div style="margin-left:auto;display:flex;gap:10px">
-      <a class="btn blue" href="#projects">Projects</a>
-      <a class="btn primary" href="#contact">Contact</a>
-    </div>
-  </header>
-  <main class="shell">
-    <section class="grid two">
-      <div class="panel glass-card">
-        <h2>Hola, soy JuaneteMii 👋</h2>
-        <p class="subtitle">UI dev que ama lo colorido y táctil — estilo Frutiger Aero.</p>
-        <div class="widget">
-          <p>Apasionado por crear experiencias brillantes y divertidas con gradientes, esquinas redondeadas, texturas glossy y animaciones suaves. Me inspiro en naturaleza: burbujas, gotas y auroras.</p>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
-            <span class="chip">HTML</span>
-            <span class="chip">CSS / Sass</span>
-            <span class="chip">JavaScript</span>
-            <span class="chip">React</span>
-            <span class="chip">Accessibility</span>
-            <span class="chip">Animations</span>
-          </div>
-        </div>
-      </div>
-      <aside class="panel glass-card">
-        <h2>Redes</h2>
-        <p class="subtitle">Sígueme y colaboremos</p>
-        <div class="widget">
-          <p>
-            <a class="link" href="https://github.com/JuaneteMii" target="_blank" rel="noreferrer">GitHub</a> ·
-            <a class="link" href="#" onclick="alert('Añade tu link de X/Twitter aquí')">X/Twitter</a> ·
-            <a class="link" href="#" onclick="alert('Añade tu link de Instagram aquí')">Instagram</a>
-          </p>
-          <div style="margin-top:10px">
-            <button class="btn blue" onclick="window.scrollTo({top:document.body.scrollHeight, behavior:'smooth'})">Di hola</button>
-          </div>
-        </div>
-      </aside>
-    </section>
-
-    <div class="bubbles" aria-hidden="true">
-      <div class="bubble lg" style="left:6%;top:18%"></div>
-      <div class="bubble med" style="left:22%;top:48%"></div>
-      <div class="bubble small" style="left:40%;top:28%"></div>
-      <div class="bubble med" style="left:58%;top:34%"></div>
-      <div class="bubble lg" style="left:78%;top:14%"></div>
+  <div class="aurora" aria-hidden="true"></div>
+  <section class="hero-banner">
+    <img src="profile.jpg" alt="Profile Picture" class="profile-picture">
+    <h1>Holas, soy JuaneteMii :)</h1>
+    <div class="subtitle">Random que hace cosas en Internet</div>
+  </section>
+  <div class="container">
+    <div class="section-title">¿Quién soy?</div>
+    <div class="bio-content">
+      <p>Si estás aquí probablemente ya me conoces, pero si no, pues intentaré presentarme.</p>
+      <p>Siempre me ha gustado hacer cosas en Internet, ya sean vídeos para YouTube, blogs, TikToks estúpidos, comunidades de Amino o Discord y el contenido que se me ocurra en redes sociales que a lo mejor ya nadie usa.</p>
+      <p>Normalmente me encontrarás más activo en Discord, pero en caso de que quieras curiosear por alguna de mis redes sociales aquí debajo os dejo algunas de las que me acuerdo.</p>
     </div>
 
-    <section id="projects" class="panel glass-card">
-      <h2>Proyectos destacados</h2>
-      <p class="subtitle">Interfaz skeuomorphic + interacciones suaves</p>
-      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
-        <div class="widget project">
-          <div class="icon"></div>
-          <div>
-            <strong>Miiflix</strong>
-            <p style="margin:.25rem 0 .5rem">UI brillante con chips, botones 3D y glass.</p>
-            <a class="link" href="https://github.com/JuaneteMii/Miiflix" target="_blank" rel="noreferrer">Ver repo</a>
-          </div>
-        </div>
-        <div class="widget project">
-          <div class="icon" style="background:linear-gradient(180deg,#fff,#e7ffe7)"></div>
-          <div>
-            <strong>note-taking-app</strong>
-            <p style="margin:.25rem 0 .5rem">Notas con tarjetas translúcidas y sombras suaves.</p>
-            <a class="link" href="https://github.com/JuaneteMii/note-taking-app" target="_blank" rel="noreferrer">Ver repo</a>
-          </div>
-        </div>
-        <div class="widget project">
-          <div class="icon" style="background:linear-gradient(180deg,#fff,#fff6e0)"></div>
-          <div>
-            <strong>html-starter</strong>
-            <p style="margin:.25rem 0 .5rem">Base ligera con colores Aero y tipografía limpia.</p>
-            <a class="link" href="https://github.com/JuaneteMii/html-starter" target="_blank" rel="noreferrer">Ver repo</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="grid two" style="margin-top:20px">
-      <div class="panel glass-card">
-        <h2>Habilidades</h2>
-        <p class="subtitle">Lo que me encanta diseñar y construir</p>
-        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
-          <div class="widget">
-            <strong>Botones glossy 3D</strong>
-            <p>Gradientes, brillos y sombras internas para look táctil.</p>
-          </div>
-          <div class="widget">
-            <strong>Glassmorphism</strong>
-            <p>Capas translúcidas con blur, similar a Vista/early iOS.</p>
-          </div>
-          <div class="widget">
-            <strong>Auroras y burbujas</strong>
-            <p>Fondos vivos con movimiento tipo Frutiger Aero.</p>
-          </div>
-          <div class="widget">
-            <strong>Interacciones suaves</strong>
-            <p>Hover/active sutiles, feedback inmediato.</p>
-          </div>
-        </div>
-      </div>
-      <div class="panel glass-card">
-        <h2>Stack</h2>
-        <div class="widget">
-          <p>Tipografía moderna: Inter. Colores: azul, cian, verde con acentos cálidos. Diseño responsive y accesible.</p>
-          <div>
-            <span class="chip">TypeScript</span>
-            <span class="chip">Vite</span>
-            <span class="chip">Tailwind (cuando aplica)</span>
-            <span class="chip">GSAP/CSS Animations</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="panel glass-card" style="margin-top:20px">
-      <h2>Contacto</h2>
-      <p class="subtitle">¿Te gusta este estilo? Envíame un ping.</p>
-      <div class="widget">
-        <form onsubmit="event.preventDefault(); alert('¡Gracias! Este es un demo estático.');">
-          <div style
+    <div class="mysocials-title">Enlaces</div>
+    <div class="socials-grid">
+      <a class="social-card" href="https://www.youtube.com/@JuaneteMii" target="_blank">
+        <img src="https://cdn.simpleicons.org/youtube/FF0000" alt="YouTube" class="social-icon">
+        <div class="social-infos">
+          <span class="social
