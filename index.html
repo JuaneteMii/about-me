@@ -1,258 +1,146 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acerca de Mí - Frutiger Aero</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            overflow-x: hidden;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .container {
-            max-width: 900px;
-            width: 100%;
-            animation: fadeInUp 1s ease;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 30px;
-            padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(31, 38, 135, 0.45),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.6);
-        }
-
-        .header-card {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-            color: white;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2),
-                        inset 0 -2px 10px rgba(0, 0, 0, 0.2),
-                        inset 0 2px 10px rgba(255, 255, 255, 0.4);
-            border: 4px solid rgba(255, 255, 255, 0.5);
-            animation: pulse 2s ease infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        h1 {
-            font-size: 3em;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3),
-                        0 0 20px rgba(255, 255, 255, 0.5);
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .subtitle {
-            font-size: 1.3em;
-            color: rgba(255, 255, 255, 0.95);
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-            margin-bottom: 0;
-        }
-
-        h2 {
-            font-size: 2em;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .about-text {
-            font-size: 1.2em;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.95);
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-        }
-
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .social-card {
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(15px);
-            border-radius: 20px;
-            padding: 30px 20px;
-            text-align: center;
-            text-decoration: none;
-            color: white;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(31, 38, 135, 0.3),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .social-card:hover::before {
-            opacity: 1;
-        }
-
-        .social-card:hover {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 10px 30px rgba(31, 38, 135, 0.5),
-                        inset 0 2px 0 rgba(255, 255, 255, 0.5);
-        }
-
-        .social-card.github {
-            background: linear-gradient(135deg, rgba(100, 65, 165, 0.4), rgba(42, 8, 69, 0.4));
-        }
-
-        .social-card.twitter {
-            background: linear-gradient(135deg, rgba(29, 161, 242, 0.4), rgba(20, 120, 200, 0.4));
-        }
-
-        .social-card.linkedin {
-            background: linear-gradient(135deg, rgba(0, 119, 181, 0.4), rgba(0, 80, 130, 0.4));
-        }
-
-        .social-card.email {
-            background: linear-gradient(135deg, rgba(234, 67, 53, 0.4), rgba(200, 40, 30, 0.4));
-        }
-
-        .social-icon {
-            font-size: 3em;
-            margin-bottom: 15px;
-            display: block;
-            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
-        }
-
-        .social-name {
-            font-size: 1.3em;
-            font-weight: 600;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .floating {
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2.2em; }
-            h2 { font-size: 1.6em; }
-            .card { padding: 25px; }
-            .social-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acerca de mí — Frutiger Aero</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family:"Segoe UI", Verdana, Tahoma, Geneva, sans-serif;color:#083045;min-height:100svh;background:
+      radial-gradient(1200px 600px at 20% 0%, rgba(0,255,194,.30), transparent 60%),
+      radial-gradient(1000px 500px at 90% 10%, rgba(0,134,255,.28), transparent 60%),
+      radial-gradient(800px 500px at 10% 80%, rgba(255,136,0,.22), transparent 60%),
+      linear-gradient(135deg, #0098ff 0%, #00c6a7 35%, #7de47a 65%, #ffb347 100%);
+      background-attachment:fixed;background-size:cover;overflow-x:hidden}
+    .page-shine{position:fixed;inset:0;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 35%,rgba(255,255,255,.12) 50%,rgba(255,255,255,0) 65%,rgba(255,255,255,0) 100%);mix-blend-mode:screen;animation:sweep 10s ease-in-out infinite}
+    @keyframes sweep{0%,100%{transform:translateX(-20%)}50%{transform:translateX(20%)}}
+    .container{max-width:1100px;margin:0 auto;padding:40px 20px 80px}
+    .card{position:relative;border-radius:28px;padding:28px;margin:22px 0;background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.55);box-shadow:0 24px 60px rgba(0,64,92,.25),0 2px 0 rgba(255,255,255,.6) inset,0 -2px 8px rgba(0,0,0,.12) inset;backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2);transition:transform .25s ease, box-shadow .25s ease}
+    .card:hover{transform:translateY(-4px);box-shadow:0 30px 70px rgba(0,64,92,.28),0 2px 0 rgba(255,255,255,.7) inset,0 -2px 10px rgba(0,0,0,.14) inset}
+    .card::before{content:"";position:absolute;left:10px;right:10px;top:10px;height:38%;border-radius:22px 22px 12px 12px;background:linear-gradient(to bottom,rgba(255,255,255,.65),rgba(255,255,255,.18));pointer-events:none}
+    .title{font-size:clamp(28px,5vw,48px);color:#fff;margin:8px 0 6px;text-shadow:0 2px 10px rgba(0,140,255,.35),0 0 28px rgba(255,255,255,.45)}
+    .subtitle{color:#eaffff;opacity:.95;text-shadow:0 1px 3px rgba(0,0,0,.25);margin:0;font-weight:600}
+    .profile{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center}
+    .avatar{width:110px;height:110px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#ffffff,#cfe9ff 55%,#6fc1ff 56%,#1c84ff 100%);box-shadow:0 16px 30px rgba(0,64,92,.35),inset 0 4px 10px rgba(255,255,255,.8),inset 0 -8px 18px rgba(0,0,0,.25);display:grid;place-items:center;color:#024a70;font-size:42px;font-weight:800;border:3px solid rgba(255,255,255,.75)}
+    h2{font-size:clamp(22px,3.5vw,32px);margin:0 0 14px;color:#ffffff;text-shadow:0 2px 8px rgba(0,0,0,.25)}
+    p{line-height:1.7;color:#062e44;font-weight:500}
+    .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px}
+    .btn{--c1:#00b7ff;--c2:#2ee6a8;position:relative;padding:10px 18px;border-radius:16px;font-weight:700;color:#05314a;text-decoration:none;background:linear-gradient(180deg,#ffffff 0%,#e7fbff 40%,#d7f6ff 41%,#c1f1ff 100%);border:1px solid rgba(255,255,255,.9);box-shadow:0 10px 18px rgba(0,64,92,.25),inset 0 2px 0 rgba(255,255,255,.9),inset 0 -3px 8px rgba(0,0,0,.15);transition:transform .15s ease, box-shadow .15s ease}
+    .btn::after{content:"";position:absolute;inset:-1px;border-radius:16px;z-index:-1;background:linear-gradient(135deg,var(--c1),var(--c2));filter:blur(12px);opacity:.55}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 16px 28px rgba(0,64,92,.3),inset 0 2px 0 rgba(255,255,255,1),inset 0 -3px 10px rgba(0,0,0,.18)}
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .social{text-decoration:none;display:block;padding:20px;border-radius:22px;position:relative;border:1px solid rgba(255,255,255,.65);color:#05314a;background:linear-gradient(160deg,rgba(255,255,255,.75),rgba(255,255,255,.35));box-shadow:0 12px 28px rgba(0,64,92,.22),inset 0 2px 0 rgba(255,255,255,.9),inset 0 -2px 10px rgba(0,0,0,.12);backdrop-filter:blur(12px);transition:transform .2s ease, box-shadow .2s ease}
+    .social:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(0,64,92,.28),inset 0 2px 0 rgba(255,255,255,1),inset 0 -2px 12px rgba(0,0,0,.14)}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:800;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.25);margin-bottom:10px}
+    .gh{background:linear-gradient(135deg,#6a5acd,#2a0845)}.tw{background:linear-gradient(135deg,#1da1f2,#0c75b7)}.li{background:linear-gradient(135deg,#0a66c2,#074a8e)}.ml{background:linear-gradient(135deg,#ff5a5f,#cc2e35)}
+    .pills{display:flex;flex-wrap:wrap;gap:10px}
+    .pill{padding:8px 14px;border-radius:999px;font-weight:700;color:#063c58;background:linear-gradient(180deg,#ffffff,#e8fbff);border:1px solid rgba(255,255,255,.8);box-shadow:0 6px 14px rgba(0,64,92,.18),inset 0 2px 0 rgba(255,255,255,.9),inset 0 -2px 8px rgba(0,0,0,.12)}
+    .gallery{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .shot{position:relative;border-radius:20px;height:160px;overflow:hidden;border:1px solid rgba(255,255,255,.75);box-shadow:0 14px 28px rgba(0,64,92,.24),inset 0 2px 0 rgba(255,255,255,.9)}
+    .shot::before{content:"";position:absolute;inset:0;background:
+      radial-gradient(400px 200px at 30% 20%, rgba(255,255,255,.9), rgba(255,255,255,.2) 60%, transparent 70%),
+      radial-gradient(280px 180px at 80% 60%, rgba(0,221,255,.5), rgba(0,221,255,.05) 65%, transparent 75%),
+      radial-gradient(300px 200px at 20% 80%, rgba(0,255,170,.45), rgba(0,255,170,.04) 65%, transparent 75%),
+      linear-gradient(135deg, #58c3ff 0%, #19e0a9 50%, #ffb347 100%)}
+    .shot::after{content:"";position:absolute;left:8px;right:8px;top:8px;height:38%;border-radius:16px;background:linear-gradient(to bottom,rgba(255,255,255,.85),rgba(255,255,255,.15))}
+    form{display:grid;gap:12px}
+    .field{display:grid;gap:6px}
+    label{font-weight:700;color:#06334b}
+    input,textarea{font:inherit;padding:12px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.85);background:linear-gradient(180deg,#ffffff,#ebfbff);color:#06334b;box-shadow:inset 0 2px 0 rgba(255,255,255,.95), inset 0 -3px 8px rgba(0,0,0,.12), 0 8px 18px rgba(0,64,92,.18)}
+    textarea{min-height:120px;resize:vertical}
+    .cta{--c1:#00a2ff;--c2:#19e0a9;display:inline-block;width:fit-content}
+    .bubble{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 30%,#ffffff,#cfe9ff 55%,#6fc1ff 56%,#1c84ff 100%);opacity:.45;box-shadow:inset 0 2px 6px rgba(255,255,255,.9), inset 0 -6px 12px rgba(0,0,0,.15), 0 12px 24px rgba(0,64,92,.22);animation:float 8s ease-in-out infinite}
+    .bubble.b1{width:80px;height:80px;top:8%;left:6%;animation-delay:-1s}
+    .bubble.b2{width:140px;height:140px;top:72%;left:10%;animation-delay:-3s}
+    .bubble.b3{width:110px;height:110px;top:20%;right:8%;animation-delay:-2s}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    .muted{color:#06415f;opacity:.8}
+    footer{text-align:center;color:#eaffff;font-weight:600;text-shadow:0 1px 4px rgba(0,0,0,.3);padding:26px 0}
+    nav.top{position:sticky;top:0;z-index:10;display:flex;gap:10px;justify-content:center;padding:10px 12px}
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="card header-card floating">
-            <div class="profile-img">👋</div>
-            <h1>¡Hola! Soy Juanete</h1>
-            <p class="subtitle">Desarrollador Creativo & Entusiasta del Diseño</p>
-        </div>
+  <div class="page-shine"></div>
+  <div class="bubble b1"></div>
+  <div class="bubble b2"></div>
+  <div class="bubble b3"></div>
 
-        <div class="card">
-            <h2>✨ ¿Quién soy?</h2>
-            <p class="about-text">
-                Soy un apasionado del diseño y la tecnología, siempre buscando crear experiencias visuales únicas e inspiradoras. 
-                Me encanta explorar estilos retro-futuristas como Frutiger Aero y combinarlos con las posibilidades modernas del desarrollo web. 
-                ¡Bienvenido a mi espacio personal!
-            </p>
-        </div>
+  <nav class="top">
+    <a class="btn" href="#quien-soy">Quién Soy</a>
+    <a class="btn" href="#enlaces">Enlaces</a>
+    <a class="btn" href="#hobbies">Hobbies</a>
+    <a class="btn" href="#galeria">Galería</a>
+    <a class="btn" href="#contacto">Contacto</a>
+  </nav>
 
-        <div class="card">
-            <h2>🌐 Conecta conmigo</h2>
-            <div class="social-grid">
-                <a href="https://github.com/JuaneteMii" class="social-card github" target="_blank">
-                    <span class="social-icon">💻</span>
-                    <span class="social-name">GitHub</span>
-                </a>
-                <a href="#" class="social-card twitter" target="_blank">
-                    <span class="social-icon">🐦</span>
-                    <span class="social-name">Twitter</span>
-                </a>
-                <a href="#" class="social-card linkedin" target="_blank">
-                    <span class="social-icon">💼</span>
-                    <span class="social-name">LinkedIn</span>
-                </a>
-                <a href="mailto:tu@email.com" class="social-card email">
-                    <span class="social-icon">✉️</span>
-                    <span class="social-name">Email</span>
-                </a>
-            </div>
+  <div class="container">
+    <section class="card" aria-label="Bienvenida">
+      <div class="profile">
+        <div class="avatar">🫧</div>
+        <div>
+          <h1 class="title">¡Hola! Soy Juanete</h1>
+          <p class="subtitle">Desarrollador creativo — Frutiger Aero enjoyer ✨</p>
+          <div class="btns">
+            <a class="btn" href="#enlaces" style="--c1:#00b7ff;--c2:#2ee6a8;">Ver enlaces</a>
+            <a class="btn" href="#contacto" style="--c1:#ffa600;--c2:#ffd966;">Contacto</a>
+          </div>
         </div>
-    </div>
-</body>
-</html>
+      </div>
+    </section>
+
+    <section class="card" id="quien-soy">
+      <h2>¿Quién soy?</h2>
+      <p>
+        Me apasiona mezclar tecnología con estética Web 2.0 vibrante: brillos, reflejos, sombras 3D y volumen.
+        Basado en guías y ejemplos de la comunidad Frutiger Aero, priorizo fondos aurora, bordes internos, esquinas
+        muy redondeadas, glassmorphism y botones skeuomórficos glossy.
+      </p>
+    </section>
+
+    <section class="card" id="enlaces">
+      <h2>Enlaces sociales</h2>
+      <div class="grid">
+        <a class="social" href="https://github.com/JuaneteMii" target="_blank" rel="noopener">
+          <span class="badge gh">GitHub</span>
+          <div class="muted">Código y proyectos</div>
+        </a>
+        <a class="social" href="#" target="_blank" rel="noopener">
+          <span class="badge tw">Twitter/X</span>
+          <div class="muted">Ideas y novedades</div>
+        </a>
+        <a class="social" href="#" target="_blank" rel="noopener">
+          <span class="badge li">LinkedIn</span>
+          <div class="muted">Trayectoria profesional</div>
+        </a>
+        <a class="social" href="mailto:correo@ejemplo.com">
+          <span class="badge ml">Email</span>
+          <div class="muted">Escríbeme cuando quieras</div>
+        </a>
+      </div>
+    </section>
+
+    <section class="card" id="hobbies">
+      <h2>Hobbies</h2>
+      <div class="pills">
+        <span class="pill">🎨 UI retro-futurista</span>
+        <span class="pill">🧪 Experimentos CSS</span>
+        <span class="pill">📷 Fotografía de naturaleza</span>
+        <span class="pill">🎮 Juegos clásicos</span>
+        <span class="pill">🌈 Wallpapers Aero</span>
+      </div>
+    </section>
+
+    <section class="card" id="galeria">
+      <h2>Galería (Wallpapers/Aero)</h2>
+      <div class="gallery">
+        <div class="shot" title="Aurora 1"></div>
+        <div class="shot" title="Aurora 2"></div>
+        <div class="shot" title="Burbujas"></div>
+        <div class="shot" title="Reflejos"></div>
+      </div>
+      <p class="muted">Galería simulada con placeholders de estilo Aero (fondos, brillos y auroras).</p>
+    </section>
+
+    <section class="card" id="contacto">
+      <h2>Contacto</h
