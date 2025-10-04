@@ -4,307 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JuaneteMii</title>
-  <meta name="theme-color" content="#4fc3f7" />
+  <meta name="theme-color" content="#35c1ff" />
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    html, body { height: 100%; }
-    
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
-      background: linear-gradient(135deg, #e1f5fe 0%, #f3e5f5 100%);
-      color: #1a237e;
-      line-height: 1.6;
-      overflow-x: hidden;
-      min-height: 100vh;
+    :root{
+      --bg1:#7cf3ff; --bg2:#7fe7a9; --bg3:#ffd36e; --bg4:#ff87d0;
+      --glass: rgba(255,255,255,.55);
+      --glass-stroke: rgba(255,255,255,.65);
+      --ink:#0d2244; --muted:#2f4a7a; --accent:#00b3ff; --accent2:#35ff9b;
+      --radius:28px;
+      --shadow: 0 10px 30px rgba(13,34,68,.25), inset 0 1px 0 rgba(255,255,255,.6);
+      --shadow-strong: 0 18px 60px rgba(13,34,68,.35), inset 0 1px 0 rgba(255,255,255,.7);
     }
-    
-    .container {
-      max-width: 880px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem 2rem;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "SF Pro Display", Arial, sans-serif;
+      color:var(--ink); line-height:1.6; overflow-x:hidden; min-height:100vh;
+      background: radial-gradient(1200px 800px at 10% 0%, var(--bg1), transparent 60%),
+                  radial-gradient(1000px 700px at 90% 10%, var(--bg4), transparent 60%),
+                  radial-gradient(900px 700px at 20% 90%, var(--bg2), transparent 60%),
+                  linear-gradient(135deg, #e6f7ff 0%, #fff7ff 100%);
+      background-attachment: fixed;
     }
-    
-    .hero {
-      text-align: center;
-      margin-bottom: 3rem;
+    .aurora{position:fixed; inset:0; pointer-events:none; filter: blur(40px) saturate(140%) opacity(.45)}
+    .container{max-width:980px; margin:0 auto; padding:40px 20px 28px}
+
+    .hero{display:flex; flex-direction:column; align-items:center; gap:14px; margin: 12px auto 26px}
+    .profile-wrap{
+      position:relative; width:150px; height:150px; border-radius:50%;
+      background:linear-gradient(145deg,#fff,#eaf6ff);
+      box-shadow: var(--shadow);
+      padding:6px;
     }
-    
-    .profile-picture {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin: 0 auto 1.2rem;
-      border: 4px solid #4fc3f7;
-      box-shadow: 0 8px 24px rgba(63, 81, 181, 0.2);
-      background: #fff;
-    }
-    
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #1a237e;
-      margin-bottom: 0.5rem;
-      letter-spacing: -1px;
-    }
-    
-    .subtitle {
-      font-size: 1.25rem;
-      color: #5e35b1;
-      margin-bottom: 2rem;
-      font-weight: 500;
-    }
-    
-    .section-title {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #1a237e;
-      margin: 3rem 0 1.5rem;
-      text-align: center;
-      letter-spacing: -0.5px;
-    }
-    
-    .bio-content {
-      font-size: 1.1rem;
-      color: #424242;
-      margin-bottom: 3rem;
-      text-align: center;
-      line-height: 1.8;
-      padding: 1.5rem;
-      background: rgba(255, 255, 255, 0.7);
-      border-radius: 20px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-    }
-    
-    .bio-content p {
-      margin-bottom: 1rem;
-    }
-    
-    .bio-content p:last-child {
-      margin-bottom: 0;
-    }
-    
-    .socials-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-    
-    @media (max-width: 730px) {
-      .socials-grid {
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
-      }
-    }
-    
-    .social-card {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1.25rem 1.5rem;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 18px;
-      border: 2px solid #e3f2fd;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    }
-    
-    .social-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(63, 81, 181, 0.2);
-      border-color: #4fc3f7;
-    }
-    
-    .social-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 12px;
-      flex-shrink: 0;
-      background: #fff;
-      padding: 4px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-    
-    .social-icon.amino {
-      border-radius: 50%;
-      padding: 0;
-    }
-    
-    .social-infos {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      flex: 1;
-      min-width: 0;
-    }
-    
-    .social-name {
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: #1a237e;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    
-    .social-desc {
-      font-size: 0.95rem;
-      color: #7e57c2;
-      font-weight: 500;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    
-    .buttons-section {
-      text-align: center;
-      margin: 3rem 0 2rem;
-    }
-    
-    .buttons-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-    }
-    
-    .link-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.9rem 2rem;
-      border: none;
-      border-radius: 50px;
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #1a237e;
-      background: linear-gradient(135deg, #4fc3f7 0%, #7e57c2 100%);
-      color: white;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 6px 20px rgba(63, 81, 181, 0.3);
-      cursor: pointer;
-    }
-    
-    .link-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 28px rgba(63, 81, 181, 0.4);
-    }
-    
-    footer {
-      text-align: center;
-      color: #5e35b1;
-      font-size: 0.95rem;
-      padding: 2rem 0 1rem;
-      margin-top: 2rem;
-    }
-    
-    @media (max-width: 650px) {
-      h1 { font-size: 2rem; }
-      .profile-picture { width: 110px; height: 110px; }
-      .bio-content { font-size: 1rem; padding: 1.25rem; }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="hero">
-      <img src="profile.jpg" alt="Profile Picture" class="profile-picture" />
-      <h1>Holas, soy JuaneteMii :)</h1>
-      <div class="subtitle">Random que hace cosas en Internet</div>
-    </div>
-    
-    <div class="section-title">¿Quién soy?</div>
-    <div class="bio-content">
-      <p>Si estás aquí probablemente ya me conoces, pero si no, pues intentaré presentarme.</p>
-      <p>Siempre me ha gustado hacer cosas en Internet, ya sean vídeos para YouTube, blogs, TikToks estúpidos, comunidades de Amino o Discord y el contenido que se me ocurra en redes sociales que a lo mejor ya nadie usa.</p>
-      <p>Normalmente me encontrarás más activo en Discord, pero en caso de que quieras curiosear por alguna de mis redes sociales aquí debajo os dejo algunas de las que me acuerdo.</p>
-    </div>
-    
-    <div class="section-title">Enlaces</div>
-    <div class="socials-grid">
-      <a class="social-card" href="https://www.youtube.com/@JuaneteMii" target="_blank">
-        <img src="https://cdn.simpleicons.org/youtube/FF0000" alt="YouTube" class="social-icon" />
-        <div class="social-infos">
-          <span class="social-name">YouTube</span>
-          <span class="social-desc">@JuaneteMii</span>
-        </div>
-      </a>
-      
-      <a class="social-card" href="https://juanetemiitomo.blogspot.com/" target="_blank">
-        <img src="https://cdn.simpleicons.org/blogger/FF5722" alt="Blogger" class="social-icon" />
-        <div class="social-infos">
-          <span class="social-name">Blogger</span>
-          <span class="social-desc">/juanetemiitomo</span>
-        </div>
-      </a>
-      
-      <a class="social-card" href="https://potaxies.vercel.app/" target="_blank">
-        <img src="https://cdn.simpleicons.org/discord/5865F2" alt="Discord" class="social-icon" />
-        <div class="social-infos">
-          <span class="social-name">Discord</span>
-          <span class="social-desc">Potaxies Server</span>
-        </div>
-      </a>
-      
-      <a class="social-card" href="https://www.tiktok.com/@juanete_mii" target="_blank">
-        <img src="https://cdn.simpleicons.org/tiktok/000000" alt="TikTok" class="social-icon" />
-        <div class="social-infos">
-          <span class="social-name">TikTok</span>
-          <span class="social-desc">@juanete_mii</span>
-        </div>
-      </a>
-      
-      <a class="social-card" href="https://www.twitch.tv/juanetemii" target="_blank">
-        <img src="https://cdn.simpleicons.org/twitch/9146FF" alt="Twitch" class="social-icon" />
-        <div class="social-infos">
-          <span class="social-name">Twitch</span>
-          <span class="social-desc">@juanetemii</span>
-        </div>
-      </a>
-      
-      <a class="social-card" href="https://www.instagram.com/juanete_mii/" target="_blank">
-        <img src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram" class="social-icon" />
-        <div class="social-infos">
-          <span class="social-name">Instagram</span>
-          <span class="social-desc">@juanete_mii</span>
-        </div>
-      </a>
-      
-      <a class="social-card" href="https://x.com/JuaneteMii" target="_blank">
-        <img src="https://cdn.simpleicons.org/x/000000" alt="X/Twitter" class="social-icon" />
-        <div class="social-infos">
-          <span class="social-name">X / Twitter</span>
-          <span class="social-desc">@JuaneteMii</span>
-        </div>
-      </a>
-      
-      <a class="social-card" href="https://aminoapps.com/u/JuaneteMii" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968875.png" alt="Amino" class="social-icon amino" />
-        <div class="social-infos">
-          <span class="social-name">Amino</span>
-          <span class="social-desc">@JuaneteMii</span>
-        </div>
-      </a>
-    </div>
-    
-    <div class="buttons-section">
-      <div class="buttons-container">
-        <a href="https://discord.gg/rg8JbWbevs" target="_blank" class="link-button">
-          Añadir a Discord
-        </a>
-        <a href="https://aminoapps.com/invite/NX52EUV9GC" target="_blank" class="link-button">
-          Añadir a Amino
-        </a>
-      </div>
-    </div>
-    
-    <footer>
-      <p>© 2025 JuaneteMii | Made with 💙</p>
-    </footer>
-  </div>
-</body>
-</html>
+    .profile-picture{width:100%; height:100%; border-radius:50%; object-fit:cover; display:block;
+      box-shadow: inset 0 0 0 6px rgba(255,255,255,.85), 0 14px 28px rgba(13,34,68,.25)}
+
+    h1{font-size: clamp(28px, 4vw, 44px); font-weight:900; letter-spacing:-.02em; margin:0}
+    .subtitle{font-size:clamp(15px,2
