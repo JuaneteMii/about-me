@@ -223,6 +223,64 @@
     overflow-wrap: break-word;
   }
 }
+@media (max-width: 600px) {
+  .btns {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px;
+    width: 100%;
+    margin-top: 14px;
+    margin-bottom: 0;
+  }
+  .btn {
+    width: 90vw; /* Ocupa gran parte del ancho en móvil */
+    max-width: 340px; /* Evita que se haga demasiado grande en tablets */
+    text-align: center;
+  }
+}
+@media (max-width: 600px) {
+  .btns {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100%;
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .btn {
+    width: 92vw;
+    max-width: 320px;
+    text-align: center;
+  }
+}
+@media (max-width: 600px) {
+  .btns {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100%;
+    max-width: 100%;
+    gap: 12px;
+    box-sizing: border-box;
+    margin: auto;
+  }
+  .btn {
+    width: 100%;
+    max-width: 320px; /* Limita el ancho máximo del botón */
+    min-width: 0;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .card {
+    max-width: 95vw;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+  }
+}
 
 
 
