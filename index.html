@@ -207,6 +207,23 @@
 .badge img {
   z-index:2;
 }
+.badge, .pill-frutiger {
+  max-width: 100%;
+  white-space: nowrap;         /* Evita saltos de línea */
+  overflow: hidden;            /* Si desborda, lo ocultamos */
+  text-overflow: ellipsis;     /* Añade ... si el texto no cabe */
+  word-break: keep-all;        /* Palabra se mantiene entera */
+}
+@media (max-width: 600px) {
+  .badge, .pill-frutiger {
+    font-size: .97em;
+    padding: 8px 9px;
+    max-width: 90vw;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
 
 
 
@@ -266,7 +283,7 @@
         <span class="glossy"></span>
         Blog
       </span>
-      <div class="muted">juanetemiitomo.blogspot.com</div>
+      <div class="muted">juanetemiitomo/</div>
     </a>
     <a class="social" href="https://potaxies.vercel.app/" target="_blank" rel="noopener">
       <span class="badge" style="display:inline-flex;align-items:center;gap:7px;background:#5865f2; position:relative;">
