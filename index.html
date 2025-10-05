@@ -231,10 +231,6 @@
   </style>
 </head>
 <body>
-  <div class="page-shine"></div>
-  <div class="bubble b1"></div>
-  <div class="bubble b2"></div>
-  <div class="bubble b3"></div>
 
 
   <div class="container">
@@ -481,5 +477,32 @@
     </a>
   </div>
 </section>
+  <script>
+    function makeBubble() {
+      const bubble = document.createElement('div');
+      bubble.className = "bubble";
+      const size = Math.random() * 60 + 30;
+      bubble.style.width = bubble.style.height = size + "px";
+      bubble.style.left = Math.random() * (window.innerWidth - size) + "px";
+      bubble.style.bottom = "-80px";
+      bubble.style.zIndex = -1;
+      bubble.style.animation = "float-bubble " + (Math.random()*8+12) + "s ease-in-out";
+      const duration = Math.random() * 6 + 8;
+      document.body.appendChild(bubble);
+      let pos = -80;
+      const topEnd = window.innerHeight + size + 80;
+      const step = () => {
+        pos += (topEnd + 80) / (duration * 70);
+        bubble.style.bottom = pos + "px";
+        if (pos < topEnd) {
+          requestAnimationFrame(step);
+        } else {
+          bubble.remove();
+        }
+      };
+      step();
+    }
+    setInterval(makeBubble, 1000);
+  </script>
 </body>
 </html>
