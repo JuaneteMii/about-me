@@ -19,7 +19,14 @@
     .card{position:relative;border-radius:28px;padding:28px;margin:22px 0;background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.55);box-shadow:0 24px 60px rgba(0,64,92,.25),0 2px 0 rgba(255,255,255,.6) inset,0 -2px 8px rgba(0,0,0,.12) inset;backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2);transition:transform .25s ease, box-shadow .25s ease}
     .card:hover{transform:translateY(-4px);box-shadow:0 30px 70px rgba(0,64,92,.28),0 2px 0 rgba(255,255,255,.7) inset,0 -2px 10px rgba(0,0,0,.14) inset}
     .card::before{content:"";position:absolute;left:10px;right:10px;top:10px;height:38%;border-radius:22px 22px 12px 12px;background:linear-gradient(to bottom,rgba(255,255,255,.65),rgba(255,255,255,.18));pointer-events:none}
-    .title{font-size:clamp(28px,5vw,48px);color:#fff;margin:8px 0 6px;text-shadow:0 2px 10px rgba(0,140,255,.35),0 0 28px rgba(255,255,255,.45)}
+    .title, h1, h2 {
+  background: linear-gradient(120deg, #252729 60%, #232526 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #252729;
+  text-shadow: 0 2px 18px rgba(40,40,40,0.11), 0 0 28px rgba(0,0,0,0.13), 0 1px 0 rgba(255,255,255,0.14);
+}
+
     .subtitle{color:#eaffff;opacity:.95;text-shadow:0 1px 3px rgba(0,0,0,.25);margin:0;font-weight:600}
     .profile{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center}
     .avatar{width:110px;height:110px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#ffffff,#cfe9ff 55%,#6fc1ff 56%,#1c84ff 100%);box-shadow:0 16px 30px rgba(0,64,92,.35),inset 0 4px 10px rgba(255,255,255,.8),inset 0 -8px 18px rgba(0,0,0,.25);display:grid;place-items:center;color:#024a70;font-size:42px;font-weight:800;border:3px solid rgba(255,255,255,.75)}
@@ -58,6 +65,141 @@
     .muted{color:#06415f;opacity:.8}
     footer{text-align:center;color:#eaffff;font-weight:600;text-shadow:0 1px 4px rgba(0,0,0,.3);padding:26px 0}
     nav.top{position:sticky;top:0;z-index:10;display:flex;gap:10px;justify-content:center;padding:10px 12px}
+    /* Mantén todo tu CSS original, solo añade/ajusta estas partes para la galería */
+
+.shot {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 160px;
+  box-shadow: 0 14px 28px rgba(0,64,92,.24), inset 0 2px 0 rgba(255,255,255,.9);
+  border: 1px solid rgba(255,255,255,.75);
+  background: none !important;
+}
+.aero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+/* Overlay glossy encima de la imagen */
+.shot::before {
+  content:"";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  pointer-events: none;
+  z-index: 2;
+  background:
+    radial-gradient(400px 200px at 30% 20%, rgba(255,255,255,.5), rgba(255,255,255,.12) 60%, transparent 70%),
+    radial-gradient(280px 180px at 80% 60%, rgba(0,221,255,.18), rgba(0,221,255,.06) 65%, transparent 75%);
+}
+.shot::after {
+  content:"";
+  position:absolute;
+  left:8px;right:8px;top:8px;
+  height:38%;
+  border-radius: 16px;
+  background:linear-gradient(to bottom,rgba(255,255,255,.18),rgba(255,255,255,.05));
+  z-index:3;
+  pointer-events:none;
+}
+.avatar-frutiger {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  box-shadow: 0 16px 30px rgba(0,64,92,.35),
+              inset 0 4px 10px rgba(255,255,255,.8),
+              inset 0 -8px 18px rgba(0,0,0,.20);
+  overflow: hidden;
+  border: 3px solid rgba(255,255,255,.75);
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #cfe9ff 60%, #6fc1ff 100%);
+  margin-right: 10px;
+  display: grid;
+  place-items: center;
+}
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+/* efecto glossy frutiger aero encima de tu avatar */
+.avatar-frutiger::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+  background:
+    radial-gradient(60px 30px at 30% 15%, rgba(255,255,255,.40), rgba(255,255,255,.05) 70%, transparent 80%),
+    linear-gradient(115deg, rgba(255,255,255,.12) 40%, rgba(255,255,255,.03) 65%);
+}
+.avatar-frutiger::after {
+  content:"";
+  position:absolute;
+  left:8px;right:8px;top:8px;
+  height:38%;
+  border-radius: 38px;
+  background:linear-gradient(to bottom,rgba(255,255,255,.19),rgba(255,255,255,.07));
+  z-index:3;
+  pointer-events:none;
+}
+@media (max-width: 600px) {
+  .profile {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    gap: 16px;
+    text-align: center; /* Centra el texto */
+  }
+  .avatar-frutiger {
+    margin-right: 0 !important;
+    margin-bottom: 12px !important;
+  }
+  .title, .subtitle {
+    font-size: 1.35em !important; /* ajusta el tamaño si queda demasiado grande */
+    word-break: break-word !important;
+  }
+}
+.badge {
+  position: relative;
+  padding: 8px 19px 8px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1.09em;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.74);
+  box-shadow: 0 6px 14px rgba(0,64,92,.16),
+              0 2px 0 rgba(255,255,255,.6) inset,
+              0 -2px 8px rgba(0,0,0,.12) inset;
+  text-shadow: 0 1px 2px #fff5, 0 1px 4px rgba(0,0,0,.07);
+  overflow: hidden;
+}
+.glossy {
+  pointer-events:none;
+  position:absolute;
+  left:0; top:0; right:0; bottom:0;
+  border-radius:999px;
+  background: linear-gradient(104deg, rgba(255,255,255,.35) 18%, rgba(255,255,255,.02) 82%);
+  opacity:.62;
+  z-index:1;
+}
+.badge img {
+  z-index:2;
+}
+
+
+
+
   </style>
 </head>
 <body>
@@ -66,21 +208,17 @@
   <div class="bubble b2"></div>
   <div class="bubble b3"></div>
 
-  <nav class="top">
-    <a class="btn" href="#quien-soy">Quién Soy</a>
-    <a class="btn" href="#enlaces">Enlaces</a>
-    <a class="btn" href="#hobbies">Hobbies</a>
-    <a class="btn" href="#galeria">Galería</a>
-    <a class="btn" href="#contacto">Contacto</a>
-  </nav>
 
   <div class="container">
     <section class="card" aria-label="Bienvenida">
       <div class="profile">
-        <div class="avatar">🫧</div>
+        <div class="avatar-frutiger">
+  <img src="https://github.com/JuaneteMii/about-me-2/blob/main/profile.jpg?raw=true" alt="Perfil Juanete" class="avatar-img">
+</div>
+
         <div>
-          <h1 class="title">¡Hola! Soy Juanete</h1>
-          <p class="subtitle">Desarrollador creativo — Frutiger Aero enjoyer ✨</p>
+          <h1 class="title">Holas, soy JuaneteMii :)</h1>
+          <p class="subtitle">Random que hace cosas en Internet</p>
           <div class="btns">
             <a class="btn" href="#enlaces" style="--c1:#00b7ff;--c2:#2ee6a8;">Ver enlaces</a>
             <a class="btn" href="#contacto" style="--c1:#ffa600;--c2:#ffd966;">Contacto</a>
@@ -90,57 +228,228 @@
     </section>
 
     <section class="card" id="quien-soy">
-      <h2>¿Quién soy?</h2>
-      <p>
-        Me apasiona mezclar tecnología con estética Web 2.0 vibrante: brillos, reflejos, sombras 3D y volumen.
-        Basado en guías y ejemplos de la comunidad Frutiger Aero, priorizo fondos aurora, bordes internos, esquinas
-        muy redondeadas, glassmorphism y botones skeuomórficos glossy.
-      </p>
-    </section>
+  <h2>¿Quién soy?</h2>
+  <p>
+    Si estás aquí probablemente ya me conoces, pero si no, pues intentaré presentarme.<br>
+    Siempre me ha gustado hacer cosas en Internet, ya sean vídeos para YouTube, blogs, TikToks estúpidos, comunidades de Amino o Discord y el contenido que se me ocurra en redes sociales que a lo mejor ya nadie usa.<br>
+    Normalmente me encontrarás más activo en Discord, pero en caso de que quieras curiosear por alguna de mis redes sociales aquí debajo os dejo algunas de las que me acuerdo.
+  </p>
+</section>
 
     <section class="card" id="enlaces">
-      <h2>Enlaces sociales</h2>
-      <div class="grid">
-        <a class="social" href="https://github.com/JuaneteMii" target="_blank" rel="noopener">
-          <span class="badge gh">GitHub</span>
-          <div class="muted">Código y proyectos</div>
-        </a>
-        <a class="social" href="#" target="_blank" rel="noopener">
-          <span class="badge tw">Twitter/X</span>
-          <div class="muted">Ideas y novedades</div>
-        </a>
-        <a class="social" href="#" target="_blank" rel="noopener">
-          <span class="badge li">LinkedIn</span>
-          <div class="muted">Trayectoria profesional</div>
-        </a>
-        <a class="social" href="mailto:correo@ejemplo.com">
-          <span class="badge ml">Email</span>
-          <div class="muted">Escríbeme cuando quieras</div>
-        </a>
-      </div>
-    </section>
+  <h2>Redes sociales</h2>
+  <div class="grid">
+    <a class="social" href="https://www.youtube.com/@JuaneteMii" target="_blank" rel="noopener">
+      <span class="badge" style="display:inline-flex;align-items:center;gap:7px;background:#ff0000; position:relative;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube"
+             style="width:20px;height:20px;vertical-align:middle;filter:invert(1);">
+        <span class="glossy"></span>
+        YouTube
+      </span>
+      <div class="muted">Canal principal</div>
+    </a>
+    <a class="social" href="https://juanetemiitomo.blogspot.com/" target="_blank" rel="noopener">
+      <span class="badge" style="display:inline-flex;align-items:center;gap:7px;background:#ff8000; position:relative;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/blogger.svg" alt="Blogspot"
+             style="width:20px;height:20px;vertical-align:middle;filter:invert(1);">
+        <span class="glossy"></span>
+        Blogspot
+      </span>
+      <div class="muted">Blog personal</div>
+    </a>
+    <a class="social" href="https://potaxies.vercel.app/" target="_blank" rel="noopener">
+      <span class="badge" style="display:inline-flex;align-items:center;gap:7px;background:#5865f2; position:relative;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord"
+             style="width:20px;height:20px;vertical-align:middle;filter:invert(1);">
+        <span class="glossy"></span>
+        Discord
+      </span>
+      <div class="muted">Servidor Potaxies</div>
+    </a>
+    <a class="social" href="https://www.tiktok.com/@jiafeistore_es" target="_blank" rel="noopener">
+      <span class="badge" style="display:inline-flex;align-items:center;gap:7px;background:#69c9d0; position:relative;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok"
+             style="width:20px;height:20px;vertical-align:middle;filter:invert(1);">
+        <span class="glossy"></span>
+        TikTok
+      </span>
+      <div class="muted">@jiafeistore_es</div>
+    </a>
+    <a class="social" href="https://youtube.com/@jiafeistore" target="_blank" rel="noopener">
+      <span class="badge" style="display:inline-flex;align-items:center;gap:7px;background:#ff0000; position:relative;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube Store"
+             style="width:20px;height:20px;vertical-align:middle;filter:invert(1);">
+        <span class="glossy"></span>
+        YouTube Store
+      </span>
+      <div class="muted">Canal secundario</div>
+    </a>
+    <a class="social" href="https://www.instagram.com/jiafeistore" target="_blank" rel="noopener">
+      <span class="badge" style="display:inline-flex;align-items:center;gap:7px;background:#833ab4; position:relative;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"
+             style="width:20px;height:20px;vertical-align:middle;filter:invert(1);">
+        <span class="glossy"></span>
+        Instagram
+      </span>
+      <div class="muted">@jiafeistore</div>
+    </a>
+    <a class="social" href="https://www.facebook.com/profile.php?id=61560267367856" target="_blank" rel="noopener">
+      <span class="badge" style="display:inline-flex;align-items:center;gap:7px;background:#1877f2; position:relative;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook"
+             style="width:20px;height:20px;vertical-align:middle;filter:invert(1);">
+        <span class="glossy"></span>
+        Facebook
+      </span>
+      <div class="muted">Perfil</div>
+    </a>
+    <a class="social" href="http://aminoapps.com/p/3ukq7s" target="_blank" rel="noopener">
+      <span class="badge" style="display:inline-flex;align-items:center;gap:7px;background:#5c1a81;position:relative;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Amino_icon.jpg"
+             alt="Amino"
+             style="width:20px;height:20px;vertical-align:middle;border-radius:50%;">
+        <span class="glossy"></span>
+        Amino
+      </span>
+      <div class="muted">Comunidad</div>
+    </a>
+    <a class="social" href="https://myspace.com/jiafeistore" target="_blank" rel="noopener">
+      <span class="badge" style="display:inline-flex;align-items:center;gap:7px;background:#00405d; position:relative;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/myspace.svg" alt="Myspace"
+             style="width:20px;height:20px;vertical-align:middle;filter:invert(1);">
+        <span class="glossy"></span>
+        MySpace
+      </span>
+      <div class="muted">Perfil MySpace</div>
+    </a>
+    <a class="social" href="https://spacehey.com/juanetemii" target="_blank" rel="noopener">
+      <span class="badge" style="display:inline-flex;align-items:center;gap:7px;background:#66c7f7; position:relative;">
+        <img src="https://spacehey.com/favicon.ico"
+             alt="SpaceHey"
+             style="width:20px;height:20px;vertical-align:middle;">
+        <span class="glossy"></span>
+        SpaceHey
+      </span>
+      <div class="muted">Perfil SpaceHey</div>
+    </a>
+  </div>
+</section>
+
+
+
 
     <section class="card" id="hobbies">
-      <h2>Hobbies</h2>
+      <h2>Lo que me gusta</h2>
       <div class="pills">
-        <span class="pill">🎨 UI retro-futurista</span>
-        <span class="pill">🧪 Experimentos CSS</span>
-        <span class="pill">📷 Fotografía de naturaleza</span>
-        <span class="pill">🎮 Juegos clásicos</span>
-        <span class="pill">🌈 Wallpapers Aero</span>
+        <span class="pill">📀 Hacer vídeos para Internet</span>
+        <span class="pill">🌐 Crear, gestionar y organizar comunidades</span>
+        <span class="pill">💾 Software antiguo y diseño Aero</span>
+        <span class="pill">🎮 Juegos con amigos en Roblox</span>
+        <span class="pill">💜 FlopTok</span>
+        <span class="pill">🎵 PinkPantheress, Ariana Grande, Charli xcx, Mitski, ...</span>
       </div>
     </section>
 
     <section class="card" id="galeria">
-      <h2>Galería (Wallpapers/Aero)</h2>
-      <div class="gallery">
-        <div class="shot" title="Aurora 1"></div>
-        <div class="shot" title="Aurora 2"></div>
-        <div class="shot" title="Burbujas"></div>
-        <div class="shot" title="Reflejos"></div>
-      </div>
-      <p class="muted">Galería simulada con placeholders de estilo Aero (fondos, brillos y auroras).</p>
-    </section>
+  <h2>Algunas de mis cosas</h2>
+  <div class="gallery">
+  <div class="shot">
+  <iframe 
+    width="100%" 
+    height="100%" 
+    src="https://www.youtube.com/embed/Zj0KTY8-LqA?controls=1&rel=0"
+    title="YouTube video"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+    style="border-radius:18px;z-index:1;position:relative;display:block;"
+  ></iframe>
+</div>
+
+    <div class="shot">
+  <iframe 
+    width="100%" 
+    height="100%" 
+    src="https://www.youtube.com/embed/Ysio0Wf4Fmc?controls=1&rel=0"
+    title="YouTube video"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+    style="border-radius:18px;z-index:1;position:relative;display:block;"
+  ></iframe>
+</div>
+<div class="shot">
+  <iframe 
+    width="100%" 
+    height="100%" 
+    src="https://www.youtube.com/embed/FiVBAnTlFwg?controls=1&rel=0"
+    title="YouTube video"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+    style="border-radius:18px;z-index:1;position:relative;display:block;"
+  ></iframe>
+</div>
+<div class="shot">
+  <iframe 
+    width="100%" 
+    height="100%" 
+    src="https://www.youtube.com/embed/tlhV96dwYGo?controls=1&rel=0"
+    title="YouTube video"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+    style="border-radius:18px;z-index:1;position:relative;display:block;"
+  ></iframe>
+</div>
+<div class="shot">
+  <iframe 
+    width="100%" 
+    height="100%" 
+    src="https://www.youtube.com/embed/s5N1ak-a5jE?controls=1&rel=0"
+    title="YouTube video"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+    style="border-radius:18px;z-index:1;position:relative;display:block;"
+  ></iframe>
+</div>
+<div class="shot" style="height:210px; overflow:hidden; position:relative;">
+  <iframe
+    src="https://discord.com/widget?id=1116872427805351960&theme=dark"
+    style="
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 18px;
+      background: #23272A;
+      overflow: hidden;"
+    allowtransparency="true"
+    frameborder="0"
+    sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+  </iframe>
+</div>
+
+  </div>
+</section>
+
 
     <section class="card" id="contacto">
-      <h2>Contacto</h
+  <h2>Contacto</h2>
+  <div class="btns" style="margin-bottom:18px;">
+    <a class="btn" href="https://potaxies.vercel.app/" target="_blank" style="--c1:#5865F2;--c2:#b8beff;display:inline-flex;align-items:center;gap:8px;">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord" style="width:26px;height:26px;background:transparent;margin-bottom:-1px;filter:drop-shadow(0 2px 8px #5865F2AA);">
+      Añadir a Discord
+    </a>
+    <a class="btn" href="http://aminoapps.com/p/3ukq7s" target="_blank" style="--c1:#5c1a81;--c2:#b79ad8;display:inline-flex;align-items:center;gap:8px;">
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Amino_icon.jpg"
+     alt="Amino"
+     style="width:26px;height:26px;background:transparent;margin-bottom:-1px;filter:drop-shadow(0 2px 8px #903bee99);border-radius:50%;">
+      Añadir a Amino
+    </a>
+  </div>
+</section>
+</body>
+</html>
